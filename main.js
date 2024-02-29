@@ -164,7 +164,7 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const doTheThing = (numbers, func1, func2, func3) => numbers.map(func1).filter(func2).filter(func3);
+// const doTheThing = (numbers, timesFunc, evenFunc, cutFunc) => numbers.map(timesFunc).filter(evenFunc).filter(cutFunc);
 
 // const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -198,12 +198,12 @@ function test(actual, expected) {
 // test(greeting("Same Desu!"), "🦈  Domo!  Same Desu!  🦈");
 
 
-//──────────────────────────────
+//──────────────────────────────OK
 //9.DOM の問題です。提出 Form に回答欄がありますので、そちらから回答してください。Gist に書き込む必要はありません。
 
 // 「xxx.js」という外部スクリプトを参照するための正しい構文はどれですか。
 
-// 1. <script src="xxx.js">
+// 1. <script src="xxx.js"> // ◯
 // 2. <script href="xxx.js">
 // 3. <script name="xxx.js">
 // 以下の HTML 要素の内容を変更するための正しい JavaScript 構文はどれですか。
@@ -211,7 +211,7 @@ function test(actual, expected) {
 // <p id="target">Hello World!</p>
 
 // 1. document.getElementByName("p").innerHTML = "Good luck!";
-// 2. document.getElementById("target").innerHTML = "Good luck!";
+// 2. document.getElementById("target").innerHTML = "Good luck!"; // ◯
 // 3. #target.innerHTML = "Good luck!";
 // 4. document.getElement("p").innerHTML = "Good luck!";
 // クリックしたときに何か変更を加えたい場合、〇〇には何が入るでしょうか。
@@ -222,18 +222,20 @@ function test(actual, expected) {
 // 1. mousedown
 // 2. mouseover
 // 3. keydown
-// 4. click
+// 4. click // ◯
 
 
-//──────────────────────────────
+//──────────────────────────────OK
 //10.getDiffDate という関数を作成してください。 getDiffDate は 2 つの日付を引数に取り、何日間離れているか日付の差分を求めます。 例: 2023/08/21 と 2023/08/22 は 1 日離れているため、数値の「1」を返します。
 
 // ここにコードを書きましょう
 
-// getDiffDate("2019/01/01", "2019/01/02"); // 1
-// getDiffDate("2019/01/01", "2019/01/01"); // 0
-// getDiffDate("2019/01/01", "2019/02/01"); // 31
-// getDiffDate("2019/01/01", "2020/01/01"); // 365
+// const getDiffDate = (startDate, endDate) => (new Date(endDate) - new Date(startDate)) / 86400000;
+
+// test(getDiffDate("2019/01/01", "2019/01/02"), 1);
+// test(getDiffDate("2019/01/01", "2019/01/01"), 0);
+// test(getDiffDate("2019/01/01", "2019/02/01"), 31);
+// test(getDiffDate("2019/01/01", "2020/01/01"), 365);
 
 
 //──────────────────────────────
@@ -241,13 +243,20 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const countDownFromOneHundred = createCounter(100, -5);
-// const countUpFromTen = createCounter(10);
+const createCounter = function(num, step = 1) {
+  function calculate() {
+    return num + step;
+  }
+  return calculate;
+}
 
-// countDownFromOneHundred(); // 100
-// countUpFromTen(); // 10
-// countUpFromTen(); // 11
-// countDownFromOneHundred(); // 95
+const countDownFromOneHundred = createCounter(100, -5);
+const countUpFromTen = createCounter(10);
+
+test(countDownFromOneHundred(), 100);
+test(countUpFromTen(), 10);
+test(countUpFromTen(), 11);
+test(countDownFromOneHundred(), 95);
 
 
 //──────────────────────────────
