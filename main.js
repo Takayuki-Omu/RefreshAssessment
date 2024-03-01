@@ -211,7 +211,7 @@ function test(actual, expected) {
 // <p id="target">Hello World!</p>
 
 // 1. document.getElementByName("p").innerHTML = "Good luck!";
-// 2. document.getElementById("target").innerHTML = "Good luck!"; // ◯
+// 2. document.getElementById("target").innerHTML = "Good luck!", ◯
 // 3. #target.innerHTML = "Good luck!";
 // 4. document.getElement("p").innerHTML = "Good luck!";
 // クリックしたときに何か変更を加えたい場合、〇〇には何が入るでしょうか。
@@ -238,59 +238,84 @@ function test(actual, expected) {
 // test(getDiffDate("2019/01/01", "2020/01/01"), 365);
 
 
-//──────────────────────────────
+//──────────────────────────────OK
 //11.createCounter という関数を作成してください。 この関数は、2 つの数値型の引数をとり、関数を返します。第 1 引数は初期値、第 2 引数はステップ数です。 返り値の関数は引数をとらず、最初に実行すると初期値を、以降は呼び出されるごとに初期値からステップ数分増やし（減らし）、それを返します。ステップ数の引数を取らない場合は、1 増やします。
 
 // ここにコードを書きましょう
 
-const createCounter = function(num, step = 1) {
-  function calculate() {
-    return num + step;
-  }
-  return calculate;
-}
+// const createCounter = function(num, step = 1) {
+//   function calculate() {
+//     const currentValue = num;
+//     num += step;
+//     return currentValue;
+//   }
+//   return calculate;
+// }
 
-const countDownFromOneHundred = createCounter(100, -5);
-const countUpFromTen = createCounter(10);
+// const countDownFromOneHundred = createCounter(100, -5);
+// const countUpFromTen = createCounter(10);
 
-test(countDownFromOneHundred(), 100);
-test(countUpFromTen(), 10);
-test(countUpFromTen(), 11);
-test(countDownFromOneHundred(), 95);
+// test(countDownFromOneHundred(), 100);
+// test(countUpFromTen(), 10);
+// test(countUpFromTen(), 11);
+// test(countDownFromOneHundred(), 95);
 
 
-//──────────────────────────────
+//──────────────────────────────OK
 //12.endsWith という関数を作成してください。 この関数は JavaScript ネイティブメソッドの .endsWith と同じ処理を行います。 ただし、String.endsWith(searchString, endPosition) ではなく、endsWith(str, searchString, endPosition) で実行します。実行内容が不明な場合は、MDN を確認し、同じ処理になるように実装してください。 この問題では、ネイティブメソッドを使用してはいけません。
 
 // ここにコードを書きましょう
 
+// const endsWith = function(str, searchString, endPosition = str.length) {
+//   let count = 0;
+
+//   for (let i = searchString.length - 1; i >= 0; i--) {
+//     if (str[endPosition -1 - count] === searchString[i]) {
+//       count++;
+//     } else {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
 // const str1 = "Cats are the best!";
 
-// endsWith(str1, "best!"); //true
-// endsWith(str1, "best", 17); //true
+// test(endsWith(str1, "best!"), true);
+// test(endsWith(str1, "best", 17), true);
 
 // const str2 = "Is this a question?";
 
-// endsWith(str2, "question"); //false
+// test(endsWith(str2, "question"), false);
 
 
-//──────────────────────────────
+//──────────────────────────────OK
 //13.findExtremeValue という関数を作成してください。 この関数はコレクション（配列またはオブジェクト）を引数にとり、条件（最大か最小）に応じた値を返します。 第 2 引数の条件は MAX（最大）または MIN（最小）になります。 組み込みオブジェクトの Math を使用してはいけません。
 
 // ここにコードを書きましょう
+
+// const findExtremeValue = function(numbers, instructions) {
+//   switch (instructions) {
+//     case "MAX":
+//       return Object.values(numbers).reduce((max, current) => max < current ? current : max);
+//     case "MIN":
+//       return Object.values(numbers).reduce((min, current) => min > current ? current : min);
+//   }
+// }
 
 // const arr1 = [1, 2, 3];
 // const arr2 = [10, 20, 15];
 // const obj1 = { a: 100, b: 70, c: 50 };
 // const obj2 = { a: 50, b: 5, c: 500 };
 
-// findExtremeValue(arr1, "MAX"); // 3
-// findExtremeValue(arr2, "MIN"); // 10
-// findExtremeValue(obj1, "MAX"); // 100
-// findExtremeValue(obj2, "MIN"); // 5
+// test(findExtremeValue(arr1, "MAX"), 3);
+// test(findExtremeValue(arr2, "MIN"), 10);
+// test(findExtremeValue(obj1, "MAX"), 100);
+// test(findExtremeValue(obj2, "MIN"), 5);
 
 
-//──────────────────────────────
+//──────────────────────────────OK
 //14.自動販売機を制御するオブジェクト vendingMachine を作成しましょう。 以下の動作を満たすメソッドを作成しましょう。 お金を投入する - insertMoney ドリンクを選ぶ - selectDrink お釣りを出す - returnChange 以下のプロパティを持ちましょう。 お金の投入額 - money いま自動販売機内にあるお金の総額 - totalMoney
 
 // const drinkStock = [
@@ -301,19 +326,56 @@ test(countDownFromOneHundred(), 95);
 
 // // ここにコードを書きましょう
 
+// const vendingMachine = {
+//   money: 0, //預り金
+//   totalMoney: 1000, //自販機内の残高
+
+//   insertMoney(money = 0){
+//     if (money <= 0) {
+//       return "お金を投入してください";
+//     }
+//     this.money += money;
+//     this.totalMoney += money;
+//   },
+
+//   selectDrink(drink) {
+//     const drinkPrice = drinkStock.find(stock => stock.name === drink).price;
+//     if (this.money >= drinkPrice) {
+//       this.money -= drinkPrice;
+//       return "water が出てきました！";
+//     } else {
+//       return "お金が足りません";
+//     }
+//   },
+
+//   returnChange() {
+//     const change = this.money;
+//     this.money = 0;
+//     this.totalMoney -=  change;
+//     return change;
+//   }
+// }
+
 // vendingMachine.insertMoney(500);
-// vendingMachine.money; // 500
-// vendingMachine.totalMoney; // 1500
-// vendingMachine.selectDrink("water"); // water が出てきました！
-// vendingMachine.returnChange(); // 400
-// vendingMachine.money; // 0
-// vendingMachine.totalMoney; // 1100
+// test(vendingMachine.money, 500);
+// test(vendingMachine.totalMoney, 1500);
+// test(vendingMachine.selectDrink("water"), "water が出てきました！")
+// test(vendingMachine.returnChange(), 400);
+// test(vendingMachine.money, 0);
+// test(vendingMachine.totalMoney, 1100);
 
 // vendingMachine.insertMoney(100);
-// vendingMachine.selectDrink("cola"); // お金が足りません
+// test(vendingMachine.selectDrink("cola"), "お金が足りません");
 
-// vendingMachine.insertMoney(); // お金を投入してください
-// vendingMachine.insertMoney(-100); // お金を投入してください
+//   test(vendingMachine.money, 100);
+//   test(vendingMachine.totalMoney, 1200);
+
+// test(vendingMachine.insertMoney(), "お金を投入してください");
+
+//   test(vendingMachine.money, 100);
+//   test(vendingMachine.totalMoney, 1200);
+
+// test(vendingMachine.insertMoney(-100), "お金を投入してください");
 
 
 //──────────────────────────────
@@ -321,32 +383,84 @@ test(countDownFromOneHundred(), 95);
 
 // ここにコードを書きましょう
 
-// compare(1, 1); // true
-// compare(1, 2); // false
+const compare = function(value1, value2) {
+  if (typeof value1 !== "object") {//プリミティブ型の処理
+    return value1 === value2;
+  } else if (value1[0] !== undefined) {//配列の処理
+    if (value1.length !== value2.length) {
+      return false;
+    }
+    for (const element1 of value1) {
+      let found = false
+      for (const element2 of value2) {
+        if (element1 === element2) {
+          found = true;
+          break;
+        }
+      }
+      if(!found) {
+        return false;
+      }
+    }
+    return true;
+  } else {//オブジェクトの処理
+    function objCompare(value1, value2) {
+      for (const key1 in value1) {
+        let found = false;
+        for (const key2 in value2) {
+          console.log("value1:",key1,value1[key1]);
+          console.log("value2:",key2,value1[key2]);
+          //──────────────────
+          if (typeof value1[key1] === "object" && typeof value2[key2] === "object") {
+            //再帰的処理
+            
+            objCompare(value1[key1], value2[key2]);
+            
+          } else {
+            if (value1[key1] === value2[key2]) {
+              found = true;
+              break;
+            }
+          }
+          //──────────────────
+        }
+        if(!found) {
+          return false;
+        }
+      }
+      return true;
+    };
+    return objCompare(value1, value2);
+  }
 
-// compare("a", "a"); // true
-// compare("a", "b"); // false
+}
 
-// compare([1, 2, 3], [1, 2, 3]); // true
-// compare([1, 2, 3], [1, 2, 4]); // false
-// compare([1, 2, 3], [1, 2, 3, 4]); // false
+// test(compare(1, 1), true);
+// test(compare(1, 2), false);
 
-// compare({ a: 1, b: 2 }, { a: 1, b: 2 }); // true
-// compare({ a: 1, b: 2 }, { b: 2, a: 1 }); // true
-// compare({ a: 1, b: 2 }, { a: 1, b: 3 }); // false
+// test(compare("a", "a"), true);
+// test(compare("a", "b"), false);
+// test(compare([1, 2, 3], [1, 2, 3]), true);
+// console.log("────────────────────")
+// test(compare([1, 2, 3], [1, 2, 4]), false);
+// test(compare([1, 2, 3], [1, 2, 3, 4]), false);
 
-// compare(
-//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
-//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } }
-// ); // true
-// compare(
+// test(compare({ a: 1, b: 2 }, { a: 1, b: 2 }), true);
+// test(compare({ a: 1, b: 2 }, { b: 2, a: 1 }), true);
+// test(compare({ a: 1, b: 2 }, { a: 1, b: 3 }), false);
+
+test(compare(
+  { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
+  { a: 1, b: { c: { d: 2, e: { f: 3 } } } }
+), true);
+// test(compare(
 //   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
 //   { a: 1, b: { c: { d: 2, e: { f: 4 } } } }
-// ); // false
-// compare(
+// ), false);
+// test(compare(
 //   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
 //   { a: 1, b: { c: { d: 2, e: { f: 4, g: 5 } } } }
-// ); // false
+// ), false);
 
 
 //──────────────────────────────
@@ -391,10 +505,10 @@ test(countDownFromOneHundred(), 95);
 
 // // --------------------------------------------------
 
-// store("CREATE_ACCOUNT", tmcAccount); // true
-// store("CREATE_ACCOUNT", digAccount); // true
-// store("CREATE_ACCOUNT", adminAccount); // true
-// store("CREATE_ACCOUNT", tmcAccount); // false（同じアカウントは存在できない）
+// store("CREATE_ACCOUNT", tmcAccount), true
+// store("CREATE_ACCOUNT", digAccount), true
+// store("CREATE_ACCOUNT", adminAccount), true
+// store("CREATE_ACCOUNT", tmcAccount), false（同じアカウントは存在できない）
 
 // // --------------------------------------------------
 
@@ -404,48 +518,48 @@ test(countDownFromOneHundred(), 95);
 //   category: "chair",
 //   stock: 100,
 //   price: 3000,
-// }); // true
+// }), true
 // store("CREATE_ITEM", adminAccount, {
 //   id: 2,
 //   name: "very good desk",
 //   category: "desk",
 //   stock: 50,
 //   price: 50000,
-// }); // true
+// }), true
 // store("CREATE_ITEM", adminAccount, {
 //   id: 3,
 //   name: "awesome desk",
 //   category: "desk",
 //   stock: 0,
 //   price: 100000,
-// }); // true
+// }), true
 // store("CREATE_ITEM", adminAccount, {
 //   id: 4,
 //   name: "good bed",
 //   category: "bed",
 //   stock: 20,
 //   price: 30000,
-// }); // true
+// }), true
 // store("CREATE_ITEM", adminAccount, {
 //   id: 4,
 //   name: "bookcase",
 //   category: "storage",
 //   stock: 50,
 //   price: 5000,
-// }); // false（既に存在するIDでの作成はできない）
+// }), false（既に存在するIDでの作成はできない）
 // store("CREATE_ITEM", adminAccount, {
 //   id: 5,
 //   name: "bookcase",
 //   category: "storage",
 //   stock: 50,
 //   price: 5000,
-// }); // true
+// }), true
 // store("CREATE_ITEM", digAccount, {
 //   name: "awesome chair",
 //   category: "chair",
 //   stock: 100,
 //   price: 100000,
-// }); // false（管理者以外は実行できない）
+// }), false（管理者以外は実行できない）
 
 // // --------------------------------------------------
 
@@ -465,7 +579,7 @@ test(countDownFromOneHundred(), 95);
 // // stock: 50,
 // // price: 50000
 // // },
-// store("GET_ITEM", tmcAccount, { id: 1000 }); // false（商品が存在しない）
+// store("GET_ITEM", tmcAccount, { id: 1000 }), false（商品が存在しない）
 
 // // --------------------------------------------------
 
@@ -574,6 +688,6 @@ test(countDownFromOneHundred(), 95);
 
 // // --------------------------------------------------
 
-// store("DELETE_ITEM", adminAccount, { id: 1 }); // true
-// store("DELETE_ITEM", adminAccount, { id: 6 }); // false（アイテムが見当たらない場合）
-// store("DELETE_ITEM", tmcAccount, { id: 2 }); // false（管理者以外は実行できない）
+// store("DELETE_ITEM", adminAccount, { id: 1 }), true
+// store("DELETE_ITEM", adminAccount, { id: 6 }), false（アイテムが見当たらない場合）
+// store("DELETE_ITEM", tmcAccount, { id: 2 }), false（管理者以外は実行できない）
