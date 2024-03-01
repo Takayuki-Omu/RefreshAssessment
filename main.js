@@ -383,57 +383,47 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-const compare = function(value1, value2) {
-  if (typeof value1 !== "object") {//プリミティブ型の処理
-    return value1 === value2;
-  } else if (value1[0] !== undefined) {//配列の処理
-    if (value1.length !== value2.length) {
-      return false;
-    }
-    for (const element1 of value1) {
-      let found = false
-      for (const element2 of value2) {
-        if (element1 === element2) {
-          found = true;
-          break;
-        }
-      }
-      if(!found) {
-        return false;
-      }
-    }
-    return true;
-  } else {//オブジェクトの処理
-    function objCompare(value1, value2) {
-      for (const key1 in value1) {
-        let found = false;
-        for (const key2 in value2) {
-          console.log("value1:",key1,value1[key1]);
-          console.log("value2:",key2,value1[key2]);
-          //──────────────────
-          if (typeof value1[key1] === "object" && typeof value2[key2] === "object") {
-            //再帰的処理
-            
-            objCompare(value1[key1], value2[key2]);
-            
-          } else {
-            if (value1[key1] === value2[key2]) {
-              found = true;
-              break;
-            }
-          }
-          //──────────────────
-        }
-        if(!found) {
-          return false;
-        }
-      }
-      return true;
-    };
-    return objCompare(value1, value2);
-  }
-
-}
+// const compare = function(value1, value2) {
+//   if (typeof value1 !== "object") {//プリミティブ型の処理
+//     return value1 === value2;
+//   } else if (value1[0] !== undefined) {//配列の処理
+//     if (value1.length !== value2.length) {
+//       return false;
+//     }
+//     for (const element1 of value1) {
+//       let found = false
+//       for (const element2 of value2) {
+//         if (element1 === element2) {
+//           found = true;
+//           break;
+//         }
+//       }
+//       if(!found) {
+//         return false;
+//       }
+//     }
+//     return true;
+//   } else {//オブジェクトの処理
+//     function objCompare(value1, value2) {
+//       for (const key1 in value1) {
+//         let found = false;
+//         for (const key2 in value2) {
+//           if (value1[key1] === value2[key2]) {
+//             found = true;
+//             break;
+//           } else if (typeof value1[key1] === "object" && typeof value2[key2] === "object") {
+//             found = objCompare(value1[key1], value2[key2]);
+//           }
+//         }
+//         if(!found) {
+//           return false;
+//         }
+//       }
+//       return true;
+//     }
+//     return objCompare(value1, value2);
+//   }
+// }
 
 // test(compare(1, 1), true);
 // test(compare(1, 2), false);
@@ -441,7 +431,7 @@ const compare = function(value1, value2) {
 // test(compare("a", "a"), true);
 // test(compare("a", "b"), false);
 // test(compare([1, 2, 3], [1, 2, 3]), true);
-// console.log("────────────────────")
+
 // test(compare([1, 2, 3], [1, 2, 4]), false);
 // test(compare([1, 2, 3], [1, 2, 3, 4]), false);
 
@@ -449,10 +439,10 @@ const compare = function(value1, value2) {
 // test(compare({ a: 1, b: 2 }, { b: 2, a: 1 }), true);
 // test(compare({ a: 1, b: 2 }, { a: 1, b: 3 }), false);
 
-test(compare(
-  { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
-  { a: 1, b: { c: { d: 2, e: { f: 3 } } } }
-), true);
+// test(compare(
+//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
+//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } }
+// ), true);
 // test(compare(
 //   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
 //   { a: 1, b: { c: { d: 2, e: { f: 4 } } } }
