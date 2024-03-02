@@ -15,22 +15,22 @@ function test(actual, expected) {
 // 1.関数 test(feed を作成し、グルメな犬と猫にごはんをあげましょう。 犬は牛肉（beef）味のドッグフード、猫はマグロ（tuna）味のキャットフードが好きで、それ以外は食べたがりません。 動物が犬か猫かの文字列とごはんを表すオブジェクトを受け取り、与えたごはんが気に入った場合は "I love it!"、気に入らなかった場合は "I don't like it!" と返しましょう。
 
 // ここにコードを書きましょう
-// const feed = function(animal, food) {
-//   if ((animal === "dog" && food.custom === "dog food" && food.taste === "beef") ||
-//      (animal === "cat" && food.custom === "cat food" && food.taste === "tuna")) {
-//     return "I love it!";
-//   } else {
-//     return "I don't like it!";
-//   }
-// }
+const feed = function(animal, food) {
+  if ((animal === "dog" && food.custom === "dog food" && food.taste === "beef") ||
+     (animal === "cat" && food.custom === "cat food" && food.taste === "tuna")) {
+    return "I love it!";
+  } else {
+    return "I don't like it!";
+  }
+}
 
-// test(feed("dog", { custom: "dog food", taste: "beef" }), "I love it!");
-// test(feed("dog", { custom: "dog food", taste: "chicken" }), "I don't like it!");
-// test(feed("dog", { custom: "cat food", taste: "chicken" }), "I don't like it!");
+test(feed("dog", { custom: "dog food", taste: "beef" }), "I love it!");
+test(feed("dog", { custom: "dog food", taste: "chicken" }), "I don't like it!");
+test(feed("dog", { custom: "cat food", taste: "chicken" }), "I don't like it!");
 
-// test(feed("cat", { custom: "cat food", taste: "tuna" }), "I love it!");
-// test(feed("cat", { custom: "cat food", taste: "chicken" }), "I don't like it!");
-// test(feed("cat", { custom: "dog food", taste: "beef" }), "I don't like it!");
+test(feed("cat", { custom: "cat food", taste: "tuna" }), "I love it!");
+test(feed("cat", { custom: "cat food", taste: "chicken" }), "I don't like it!");
+test(feed("cat", { custom: "dog food", taste: "beef" }), "I don't like it!");
 
 
 //──────────────────────────────
@@ -38,16 +38,16 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const reverse = function(arr) {
-//   const result = [];
-//   for (let i = arr.length -1; i >= 0; i--) {
-//     result.push(arr[i]);
-//   }
-//   return result;
-// }
+const reverse = function(arr) {
+  const result = [];
+  for (let i = arr.length -1; i >= 0; i--) {
+    result.push(arr[i]);
+  }
+  return result;
+}
 
-// test(reverse([1, 2, 3]), [3, 2, 1]);
-// test(reverse([{ name: "mike", isCat: true }, true, "hello!"]), [ "hello!", true, { name: "mike", isCat: true }]);
+test(reverse([1, 2, 3]), [3, 2, 1]);
+test(reverse([{ name: "mike", isCat: true }, true, "hello!"]), [ "hello!", true, { name: "mike", isCat: true }]);
 
 
 //──────────────────────────────
@@ -55,29 +55,29 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const calculateTotalWithTax = function(priceList, shoppingCart) {
-//   let total = 0;
-//   for (const key in priceList) {
-//     total += (priceList[key] * shoppingCart[key]);
-//   }
-//   return total * 1.1;
-// }
+const calculateTotalWithTax = function(priceList, shoppingCart) {
+  let total = 0;
+  for (const key in priceList) {
+    total += (priceList[key] * shoppingCart[key]);
+  }
+  return total * 1.1;
+}
 
-// const priceList = {
-//   apple: 150,
-//   banana: 190,
-//   grape: 2000,
-//   orange: 300,
-// };
+const priceList = {
+  apple: 150,
+  banana: 190,
+  grape: 2000,
+  orange: 300,
+};
 
-// const shoppingCart = {
-//   apple: 3,
-//   banana: 1,
-//   grape: 3,
-//   orange: 5,
-// };
+const shoppingCart = {
+  apple: 3,
+  banana: 1,
+  grape: 3,
+  orange: 5,
+};
 
-// test(calculateTotalWithTax(priceList, shoppingCart), 8954);
+test(calculateTotalWithTax(priceList, shoppingCart), 8954);
 
 
 //──────────────────────────────OK
@@ -85,21 +85,21 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const totalBookSales = books => books.map(book => book.price * book.sales);
+const totalBookSales = books => books.map(book => book.price * book.sales);
 
-// test(totalBookSales([
-//   {
-//     id: 1,
-//     name: "JavaScript の基礎を復習する本",
-//     price: 2800,
-//     stock: 3,
-//     sales: 10,
-//   },
-//   { id: 2, name: "JavaScript の配列", price: 3200, stock: 2, sales: 5 },
-//   { id: 3, name: "DOM を極める", price: 3800, stock: 5, sales: 15 },
-//   { id: 4, name: "高階関数の基本", price: 4200, stock: 1, sales: 20 },
-//   { id: 5, name: "DIG BTC の心構え", price: 2680, stock: 4, sales: 10 },
-// ]),[28000, 16000, 57000, 84000, 26800]);
+test(totalBookSales([
+  {
+    id: 1,
+    name: "JavaScript の基礎を復習する本",
+    price: 2800,
+    stock: 3,
+    sales: 10,
+  },
+  { id: 2, name: "JavaScript の配列", price: 3200, stock: 2, sales: 5 },
+  { id: 3, name: "DOM を極める", price: 3800, stock: 5, sales: 15 },
+  { id: 4, name: "高階関数の基本", price: 4200, stock: 1, sales: 20 },
+  { id: 5, name: "DIG BTC の心構え", price: 2680, stock: 4, sales: 10 },
+]),[28000, 16000, 57000, 84000, 26800]);
 
 
 //──────────────────────────────OK
@@ -110,17 +110,17 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const getValuesByProperty = (objects, property) => objects.reduce((acc, curr) => acc.concat(curr[property]), []);
+const getValuesByProperty = (objects, property) => objects.reduce((acc, curr) => acc.concat(curr[property]), []);
 
-// const objects = [
-//   { name: "Alice", age: 30 },
-//   { name: "Bob", age: 25 },
-//   { name: "Charlie", age: 35 },
-// ];
+const objects = [
+  { name: "Alice", age: 30 },
+  { name: "Bob", age: 25 },
+  { name: "Charlie", age: 35 },
+];
 
-// const property = "name";
+const property = "name";
 
-// test(getValuesByProperty(objects, property),["Alice", "Bob", "Charlie"]);
+test(getValuesByProperty(objects, property),["Alice", "Bob", "Charlie"]);
 
 
 //──────────────────────────────OK
@@ -128,35 +128,35 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const mergeAndSumObjects = function(...arrays) {
-//   const result = {};
+const mergeAndSumObjects = function(...arrays) {
+  const result = {};
 
-//   arrays.forEach((arr) => {
-//     arr.forEach((obj) => {
-//       const id = obj.id;
-//       if (!result[id]) {
-//         result[id] = obj;
-//       } else {
-//         result[id].x += obj.x;
-//         result[id].y += obj.y;
-//       }
-//     });
-//   });
+  arrays.forEach((arr) => {
+    arr.forEach((obj) => {
+      const id = obj.id;
+      if (!result[id]) {
+        result[id] = obj;
+      } else {
+        result[id].x += obj.x;
+        result[id].y += obj.y;
+      }
+    });
+  });
 
-//   return Object.values(result);
-// }
+  return Object.values(result);
+}
 
-// const arr1 = [
-//   { id: 1, x: 1, y: 3 },
-//   { id: 2, x: 3, y: 5 },
-// ];
-// const arr2 = [{ id: 3, x: 2, y: 2 }];
+const arr1 = [
+  { id: 1, x: 1, y: 3 },
+  { id: 2, x: 3, y: 5 },
+];
+const arr2 = [{ id: 3, x: 2, y: 2 }];
 
-// test(mergeAndSumObjects(arr1, arr2),[{ id: 1, x: 1, y: 3 },{ id: 2, x: 3, y: 5 },{ id: 3, x: 2, y: 2 }]);
+test(mergeAndSumObjects(arr1, arr2),[{ id: 1, x: 1, y: 3 },{ id: 2, x: 3, y: 5 },{ id: 3, x: 2, y: 2 }]);
 
-// const arr3 = [{ id: 2, x: 3, y: 4 }];
+const arr3 = [{ id: 2, x: 3, y: 4 }];
 
-// test(mergeAndSumObjects(arr1, arr2, arr3),[{ id: 1, x: 1, y: 3 },{ id: 2, x: 6, y: 9 },{ id: 3, x: 2, y: 2 }]);
+test(mergeAndSumObjects(arr1, arr2, arr3),[{ id: 1, x: 1, y: 3 },{ id: 2, x: 6, y: 9 },{ id: 3, x: 2, y: 2 }]);
 
 
 //──────────────────────────────OK
@@ -164,16 +164,16 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const doTheThing = (numbers, timesFunc, evenFunc, cutFunc) => numbers.map(timesFunc).filter(evenFunc).filter(cutFunc);
+const doTheThing = (numbers, timesFn, evenFn, cutFn) => numbers.map(timesFn).filter(evenFn).filter(cutFn);
 
-// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// test(doTheThing(
-//   numbers,
-//   (n) => n * 3,
-//   (n) => n % 2 === 0,
-//   (n) => n > 20
-// ),[24, 30]);
+test(doTheThing(
+  numbers,
+  (n) => n * 3,
+  (n) => n % 2 === 0,
+  (n) => n > 20
+),[24, 30]);
 
 
 //──────────────────────────────OK
@@ -181,21 +181,21 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const createMessages = function(str, obj) {
-//   function message(recipient) {
-//     const greeting = [obj.start, str, recipient, obj.end];
-//     return greeting.join(Array(obj.space + 1).join(" "));
-//   }
-//   return message;
-// }
+const createMessages = function(str, obj) {
+  function message(recipient) {
+    const greeting = [obj.start, str, recipient, obj.end];
+    return greeting.join(Array(obj.space + 1).join(" "));
+  }
+  return message;
+}
 
 // const createMessages = (str, obj) => recipient => [obj.start, str, recipient, obj.end].join(Array(obj.space + 1).join(" "));
 
-// let greeting = createMessages("Hello", { start: "😄", end: "♪", space: 1 });
-// test(greeting("DIG"), "😄 Hello DIG ♪");
+let greeting = createMessages("Hello", { start: "😄", end: "♪", space: 1 });
+test(greeting("DIG"), "😄 Hello DIG ♪");
 
-// greeting = createMessages("Domo!", { start: "🦈", end: "🦈", space: 2 });
-// test(greeting("Same Desu!"), "🦈  Domo!  Same Desu!  🦈");
+greeting = createMessages("Domo!", { start: "🦈", end: "🦈", space: 2 });
+test(greeting("Same Desu!"), "🦈  Domo!  Same Desu!  🦈");
 
 
 //──────────────────────────────OK
@@ -230,12 +230,12 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const getDiffDate = (startDate, endDate) => (new Date(endDate) - new Date(startDate)) / 86400000;
+const getDiffDate = (startDate, endDate) => (new Date(endDate) - new Date(startDate)) / 86400000;
 
-// test(getDiffDate("2019/01/01", "2019/01/02"), 1);
-// test(getDiffDate("2019/01/01", "2019/01/01"), 0);
-// test(getDiffDate("2019/01/01", "2019/02/01"), 31);
-// test(getDiffDate("2019/01/01", "2020/01/01"), 365);
+test(getDiffDate("2019/01/01", "2019/01/02"), 1);
+test(getDiffDate("2019/01/01", "2019/01/01"), 0);
+test(getDiffDate("2019/01/01", "2019/02/01"), 31);
+test(getDiffDate("2019/01/01", "2020/01/01"), 365);
 
 
 //──────────────────────────────OK
@@ -243,22 +243,22 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const createCounter = function(num, step = 1) {
-//   function calculate() {
-//     const currentValue = num;
-//     num += step;
-//     return currentValue;
-//   }
-//   return calculate;
-// }
+const createCounter = function(num, step = 1) {
+  function calculate() {
+    const currentValue = num;
+    num += step;
+    return currentValue;
+  }
+  return calculate;
+}
 
-// const countDownFromOneHundred = createCounter(100, -5);
-// const countUpFromTen = createCounter(10);
+const countDownFromOneHundred = createCounter(100, -5);
+const countUpFromTen = createCounter(10);
 
-// test(countDownFromOneHundred(), 100);
-// test(countUpFromTen(), 10);
-// test(countUpFromTen(), 11);
-// test(countDownFromOneHundred(), 95);
+test(countDownFromOneHundred(), 100);
+test(countUpFromTen(), 10);
+test(countUpFromTen(), 11);
+test(countDownFromOneHundred(), 95);
 
 
 //──────────────────────────────OK
@@ -266,28 +266,28 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const endsWith = function(str, searchString, endPosition = str.length) {
-//   let count = 0;
+const endsWith = function(str, searchString, endPosition = str.length) {
+  let count = 0;
 
-//   for (let i = searchString.length - 1; i >= 0; i--) {
-//     if (str[endPosition -1 - count] === searchString[i]) {
-//       count++;
-//     } else {
-//       return false;
-//     }
-//   }
+  for (let i = searchString.length - 1; i >= 0; i--) {
+    if (str[endPosition -1 - count] === searchString[i]) {
+      count++;
+    } else {
+      return false;
+    }
+  }
 
-//   return true;
-// }
+  return true;
+}
 
-// const str1 = "Cats are the best!";
+const str1 = "Cats are the best!";
 
-// test(endsWith(str1, "best!"), true);
-// test(endsWith(str1, "best", 17), true);
+test(endsWith(str1, "best!"), true);
+test(endsWith(str1, "best", 17), true);
 
-// const str2 = "Is this a question?";
+const str2 = "Is this a question?";
 
-// test(endsWith(str2, "question"), false);
+test(endsWith(str2, "question"), false);
 
 
 //──────────────────────────────OK
@@ -295,165 +295,173 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const findExtremeValue = function(numbers, instructions) {
-//   switch (instructions) {
-//     case "MAX":
-//       return Object.values(numbers).reduce((max, current) => max < current ? current : max);
-//     case "MIN":
-//       return Object.values(numbers).reduce((min, current) => min > current ? current : min);
-//   }
-// }
+const findExtremeValue = function(numbers, instructions) {
+  const getNumberFn = function(num, current) {
+    if (instructions === "MAX") {
+       return num < current ? current : num;
+    } else {
+       return num > current ? current : num;
+    }
+  }
 
-// const arr1 = [1, 2, 3];
-// const arr2 = [10, 20, 15];
-// const obj1 = { a: 100, b: 70, c: 50 };
-// const obj2 = { a: 50, b: 5, c: 500 };
+  return Object.values(numbers).reduce(getNumberFn);
+}
 
-// test(findExtremeValue(arr1, "MAX"), 3);
-// test(findExtremeValue(arr2, "MIN"), 10);
-// test(findExtremeValue(obj1, "MAX"), 100);
-// test(findExtremeValue(obj2, "MIN"), 5);
+const arr11 = [1, 2, 3];
+const arr21 = [10, 20, 15];
+const obj11 = { a: 100, b: 70, c: 50 };
+const obj21 = { a: 50, b: 5, c: 500 };
+
+test(findExtremeValue(arr11, "MAX"), 3);
+test(findExtremeValue(arr21, "MIN"), 10);
+test(findExtremeValue(obj11, "MAX"), 100);
+test(findExtremeValue(obj21, "MIN"), 5);
 
 
 //──────────────────────────────OK
 //14.自動販売機を制御するオブジェクト vendingMachine を作成しましょう。 以下の動作を満たすメソッドを作成しましょう。 お金を投入する - insertMoney ドリンクを選ぶ - selectDrink お釣りを出す - returnChange 以下のプロパティを持ちましょう。 お金の投入額 - money いま自動販売機内にあるお金の総額 - totalMoney
 
-// const drinkStock = [
-//   { name: "cola", price: 120 },
-//   { name: "water", price: 100 },
-//   { name: "tea", price: 150 },
-// ];
+const drinkStock = [
+  { name: "cola", price: 120 },
+  { name: "water", price: 100 },
+  { name: "tea", price: 150 },
+];
 
-// // ここにコードを書きましょう
+// ここにコードを書きましょう
 
-// const vendingMachine = {
-//   money: 0, //預り金
-//   totalMoney: 1000, //自販機内の残高
+const vendingMachine = {
+  money: 0, //預り金
+  totalMoney: 1000, //自販機内の残高
 
-//   insertMoney(money = 0){
-//     if (money <= 0) {
-//       return "お金を投入してください";
-//     }
-//     this.money += money;
-//     this.totalMoney += money;
-//   },
+  insertMoney(money = 0){
+    if (money <= 0) {
+      return "お金を投入してください";
+    }
+    this.money += money;
+    this.totalMoney += money;
+  },
 
-//   selectDrink(drink) {
-//     const drinkPrice = drinkStock.find(stock => stock.name === drink).price;
-//     if (this.money >= drinkPrice) {
-//       this.money -= drinkPrice;
-//       return "water が出てきました！";
-//     } else {
-//       return "お金が足りません";
-//     }
-//   },
+  selectDrink(drink) {
+    const drinkPrice = drinkStock.find(stock => stock.name === drink).price;
+    if (this.money >= drinkPrice) {
+      this.money -= drinkPrice;
+      return "water が出てきました！";
+    } else {
+      return "お金が足りません";
+    }
+  },
 
-//   returnChange() {
-//     const change = this.money;
-//     this.money = 0;
-//     this.totalMoney -=  change;
-//     return change;
-//   }
-// }
+  returnChange() {
+    const change = this.money;
+    this.money = 0;
+    this.totalMoney -=  change;
+    return change;
+  }
+}
 
-// vendingMachine.insertMoney(500);
-// test(vendingMachine.money, 500);
-// test(vendingMachine.totalMoney, 1500);
-// test(vendingMachine.selectDrink("water"), "water が出てきました！")
-// test(vendingMachine.returnChange(), 400);
-// test(vendingMachine.money, 0);
-// test(vendingMachine.totalMoney, 1100);
+vendingMachine.insertMoney(500);
+test(vendingMachine.money, 500);
+test(vendingMachine.totalMoney, 1500);
+test(vendingMachine.selectDrink("water"), "water が出てきました！")
+test(vendingMachine.returnChange(), 400);
+test(vendingMachine.money, 0);
+test(vendingMachine.totalMoney, 1100);
 
-// vendingMachine.insertMoney(100);
-// test(vendingMachine.selectDrink("cola"), "お金が足りません");
+vendingMachine.insertMoney(100);
+test(vendingMachine.selectDrink("cola"), "お金が足りません");
 
-//   test(vendingMachine.money, 100);
-//   test(vendingMachine.totalMoney, 1200);
+  test(vendingMachine.money, 100);
+  test(vendingMachine.totalMoney, 1200);
 
-// test(vendingMachine.insertMoney(), "お金を投入してください");
+test(vendingMachine.insertMoney(), "お金を投入してください");
 
-//   test(vendingMachine.money, 100);
-//   test(vendingMachine.totalMoney, 1200);
+  test(vendingMachine.money, 100);
+  test(vendingMachine.totalMoney, 1200);
 
-// test(vendingMachine.insertMoney(-100), "お金を投入してください");
+test(vendingMachine.insertMoney(-100), "お金を投入してください");
 
 
-//──────────────────────────────
+//──────────────────────────────OK
 //15.compare という関数を作成してください。 compare は 2 つの値を引数に取り、その値が等しいかを判定してブーリアンを返します。オブジェクトについては順番を考慮する必要はありません。ただし値がネストしている場合も、完全に一致しているかを確かめてください。 この関数ではネイティブメソッドの使用は禁止とします。
 
 // ここにコードを書きましょう
 
-// const compare = function(value1, value2) {
-//   if (typeof value1 !== "object") {//プリミティブ型の処理
-//     return value1 === value2;
-//   } else if (value1[0] !== undefined) {//配列の処理
-//     if (value1.length !== value2.length) {
-//       return false;
-//     }
-//     for (const element1 of value1) {
-//       let found = false
-//       for (const element2 of value2) {
-//         if (element1 === element2) {
-//           found = true;
-//           break;
-//         }
-//       }
-//       if(!found) {
-//         return false;
-//       }
-//     }
-//     return true;
-//   } else {//オブジェクトの処理
-//     function objCompare(value1, value2) {
-//       for (const key1 in value1) {
-//         let found = false;
-//         for (const key2 in value2) {
-//           if (value1[key1] === value2[key2]) {
-//             found = true;
-//             break;
-//           } else if (typeof value1[key1] === "object" && typeof value2[key2] === "object") {
-//             found = objCompare(value1[key1], value2[key2]);
-//           }
-//         }
-//         if(!found) {
-//           return false;
-//         }
-//       }
-//       return true;
-//     }
-//     return objCompare(value1, value2);
-//   }
-// }
+const compare = function(value1, value2) {
+  const arrCompare = function(value1, value2) {
+    if (value1.length !== value2.length) {
+      return false;
+    }
+    for (const element1 of value1) {
+      let found = false
+      for (const element2 of value2) {
+        if (element1 === element2) {
+          found = true;
+          break;
+        }
+      }
+      if(!found) {
+        return false;
+      }
+    }
+    return true;
+  }
 
-// test(compare(1, 1), true);
-// test(compare(1, 2), false);
+  const objCompare = function(value1, value2) {
+    for (const key1 in value1) {
+      let found = false;
+      for (const key2 in value2) {
+        if (value1[key1] === value2[key2]) {
+          found = true;
+          break;
+        } else if (typeof value1[key1] === "object" && typeof value2[key2] === "object") {
+          found = objCompare(value1[key1], value2[key2]);
+        }
+      }
+      if(!found) {
+        return false;
+      }
+    }
+    return true;
+  }
 
-// test(compare("a", "a"), true);
-// test(compare("a", "b"), false);
-// test(compare([1, 2, 3], [1, 2, 3]), true);
+  if (typeof value1 !== "object") {
+    return value1 === value2;
+  } else if (value1[0] !== undefined) {
+    return arrCompare(value1, value2);
+  } else {
+    return objCompare(value1, value2);
+  }
+}
 
-// test(compare([1, 2, 3], [1, 2, 4]), false);
-// test(compare([1, 2, 3], [1, 2, 3, 4]), false);
+test(compare(1, 1), true);
+test(compare(1, 2), false);
 
-// test(compare({ a: 1, b: 2 }, { a: 1, b: 2 }), true);
-// test(compare({ a: 1, b: 2 }, { b: 2, a: 1 }), true);
-// test(compare({ a: 1, b: 2 }, { a: 1, b: 3 }), false);
+test(compare("a", "a"), true);
+test(compare("a", "b"), false);
+test(compare([1, 2, 3], [1, 2, 3]), true);
 
-// test(compare(
-//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
-//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } }
-// ), true);
-// test(compare(
-//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
-//   { a: 1, b: { c: { d: 2, e: { f: 4 } } } }
-// ), false);
-// test(compare(
-//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
-//   { a: 1, b: { c: { d: 2, e: { f: 4, g: 5 } } } }
-// ), false);
+test(compare([1, 2, 3], [1, 2, 4]), false);
+test(compare([1, 2, 3], [1, 2, 3, 4]), false);
+
+test(compare({ a: 1, b: 2 }, { a: 1, b: 2 }), true);
+test(compare({ a: 1, b: 2 }, { b: 2, a: 1 }), true);
+test(compare({ a: 1, b: 2 }, { a: 1, b: 3 }), false);
+
+test(compare(
+  { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
+  { a: 1, b: { c: { d: 2, e: { f: 3 } } } }
+), true);
+test(compare(
+  { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
+  { a: 1, b: { c: { d: 2, e: { f: 4 } } } }
+), false);
+test(compare(
+  { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
+  { a: 1, b: { c: { d: 2, e: { f: 4, g: 5 } } } }
+), false);
 
 
-//──────────────────────────────
+//──────────────────────────────OK
 //16.あなたはオンラインで家具を販売する Web サイトを作成しています。必要な機能を持った関数 furnitureStore を作成してください。 必要な機能については、以下の要件を参照してください。 引数に渡す動作名・プロパティ・構造（例：CREATE_ACCOUNT, { accountId: ..., emailId: ... }）や、 戻り値のプロパティ・構造（例：.furnitureStore, { id: ..., name: ...}）は例文と同じものにしてください。 なお、この問題では JavaScript ネイティブメソッドの制限はありませんが、グローバル変数の使用は禁止です。 また、この問題ではどのようなデータモデルになっているか（どうデータを整理して格納するか）は問題から汲み取って判断してください。
 // ブーリアン値のあとのカッコ書きは補足です。返り値はブーリアン値のみで結構です。
 
@@ -472,212 +480,313 @@ function test(actual, expected) {
 
 // ここにコードを書きましょう
 
-// const store = furnitureStore();
+const furnitureStore = function() {
+  const accounts = [];
+  const items = [];
 
-// const tmcAccount = {
-//   id: 1,
-//   name: "TMC",
-//   emailAddress: "tmc@email-service.com",
-//   idAdmin: false,
-// };
-// const digAccount = {
-//   id: 2,
-//   name: "DIG",
-//   emailAddress: "dig@email-service.com",
-//   idAdmin: false,
-// };
-// const adminAccount = {
-//   id: 3,
-//   name: "ADMIN",
-//   emailAddress: "admin@email-service.com",
-//   idAdmin: true,
-// };
+  const createAccount = function(id, account) {
+    const target = accounts.find(account => account.id === id);
+    if (target !== undefined) {
+      return false;
+    }
+    accounts.push(account);
+    return true;
+  }
 
-// // --------------------------------------------------
+  const createItem = function(idAdmin, id, item) {
+    const target = items.find(item => item.id === id);
+    if (!idAdmin || target !== undefined ) {
+      return false;
+    }
+    items.push(item);
+    return true;
+  }
 
-// store("CREATE_ACCOUNT", tmcAccount), true
-// store("CREATE_ACCOUNT", digAccount), true
-// store("CREATE_ACCOUNT", adminAccount), true
-// store("CREATE_ACCOUNT", tmcAccount), false（同じアカウントは存在できない）
+  const getItem = function(id) {
+    const target = items.find(item => item.id === id);
+    if (target === undefined) {
+      return false;
+    }
+    return target;
+  }
 
-// // --------------------------------------------------
+  const getItemByCategory = function(category) {
+    const target = items.filter(item => item.category === category);
+    if (target.length === 0) {
+      return false;
+    }
+    return target;
+  }
 
-// store("CREATE_ITEM", adminAccount, {
-//   id: 1,
-//   name: "desk chair",
-//   category: "chair",
-//   stock: 100,
-//   price: 3000,
-// }), true
-// store("CREATE_ITEM", adminAccount, {
-//   id: 2,
-//   name: "very good desk",
-//   category: "desk",
-//   stock: 50,
-//   price: 50000,
-// }), true
-// store("CREATE_ITEM", adminAccount, {
-//   id: 3,
-//   name: "awesome desk",
-//   category: "desk",
-//   stock: 0,
-//   price: 100000,
-// }), true
-// store("CREATE_ITEM", adminAccount, {
-//   id: 4,
-//   name: "good bed",
-//   category: "bed",
-//   stock: 20,
-//   price: 30000,
-// }), true
-// store("CREATE_ITEM", adminAccount, {
-//   id: 4,
-//   name: "bookcase",
-//   category: "storage",
-//   stock: 50,
-//   price: 5000,
-// }), false（既に存在するIDでの作成はできない）
-// store("CREATE_ITEM", adminAccount, {
-//   id: 5,
-//   name: "bookcase",
-//   category: "storage",
-//   stock: 50,
-//   price: 5000,
-// }), true
-// store("CREATE_ITEM", digAccount, {
-//   name: "awesome chair",
-//   category: "chair",
-//   stock: 100,
-//   price: 100000,
-// }), false（管理者以外は実行できない）
+  const getItemByPrice = function(price, condition) {
+    const conditionFn = condition === "or less" ? (x) => x <= price : (x) => x >= price;
+    const target = items.filter(item => conditionFn(item.price));
+    if (target.length === 0) {
+      return false;
+    }
+    return target;
+  }
 
-// // --------------------------------------------------
+  const getItemByStok = function(stock) {
+    const target = items.filter(item => item.stock >= stock);
+    if (target.length === 0) {
+      return false;
+    }
+    return target;
+  }
 
-// store("GET_ITEM", tmcAccount, { id: 1 });
-// // {
-// // id: 1,
-// // name: "desk chair",
-// // category: "chair",
-// // stock: 100,
-// // price: 3000
-// // }
-// store("GET_ITEM", tmcAccount, { id: 2 });
-// // {
-// // id: 2,
-// // name: "very good desk",
-// // category: "desk",
-// // stock: 50,
-// // price: 50000
-// // },
-// store("GET_ITEM", tmcAccount, { id: 1000 }), false（商品が存在しない）
+  const getItemByName = function(name) {
+    const target = items.filter(item => item.name === name);
+    if (target.length === 0) {
+      return false;
+    }
+    return target;
+  }
 
-// // --------------------------------------------------
+  const deleteItem = function(idAdmin, id) {
+    const target = accounts.find(account => account.id === id);
+    if (!idAdmin || target === undefined) {
+      return false;
+    }
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].id === id) {
+          items.splice(i, 1);
+          break;
+      }
+    } 
+    return true;
+  }
 
-// store("GET_ITEM_BY_CATEGORY", tmcAccount, { category: "desk" });
-// // [
-// // {
-// // id: 2,
-// // name: "very good desk",
-// // category: "desk",
-// // stock: 50,
-// // price: 50000
-// // },
-// // {
-// // id: 3,
-// // name: "awesome desk",
-// // category: "desk",
-// // stock: 0,
-// // price: 100000
-// // }
-// // ]
-// store("GET_ITEM_BY_CATEGORY", tmcAccount, { category: "chair" });
-// // [
-// // {
-// // id: 1,
-// // name: "desk chair",
-// // category: "chair",
-// // stock: 100,
-// // price: 3000
-// // }
-// // ]
+  return function(func, account, item) {
+    switch (func) {
+      case "CREATE_ACCOUNT":
+        return createAccount(account.id, account);
+      case "CREATE_ITEM":
+        return createItem(account.idAdmin, item.id, item);
+      case "GET_ITEM":
+        return getItem(item.id);
+      case "GET_ITEM_BY_CATEGORY":
+        return getItemByCategory(item.category);
+      case "GET_ITEM_BY_PRICE":
+        return getItemByPrice(item.price, item.condition);
+      case "GET_ITEM_BY_STOCK":
+        return getItemByStok(item.stock);
+      case "GET_ITEM_BY_NAME":
+        return getItemByName(item.name);
+      case "DELETE_ITEM":
+        return deleteItem(account.idAdmin, item.id);
+      default:
+        return false;
+    }
+  }
+}
 
-// // --------------------------------------------------
+const store = furnitureStore();
 
-// store("GET_ITEM_BY_PRICE", digAccount, {
-//   price: 50000,
-//   condition: "or less",
-// });
-// // [
-// // {
-// // id: 1,
-// // name: "desk chair",
-// // category: "chair",
-// // stock: 100,
-// // price: 3000
-// // },
-// // {
-// //   id: 2,
-// //   name: 'very good desk',
-// //   category: 'desk',
-// //   stock: 50,
-// //   price: 50000,
-// // },
-// // {
-// // id: 4,
-// // name: "good bed",
-// // category: "bed",
-// // stock: 20,
-// // price: 30000
-// // },
-// // {
-// // id: 5,
-// // name: "bookcase",
-// // category: "storage",
-// // stock: 50,
-// // price: 5000
-// // }
-// // ]
+const tmcAccount = {
+  id: 1,
+  name: "TMC",
+  emailAddress: "tmc@email-service.com",
+  idAdmin: false,
+};
+const digAccount = {
+  id: 2,
+  name: "DIG",
+  emailAddress: "dig@email-service.com",
+  idAdmin: false,
+};
+const adminAccount = {
+  id: 3,
+  name: "ADMIN",
+  emailAddress: "admin@email-service.com",
+  idAdmin: true,
+};
 
-// store("GET_ITEM_BY_PRICE", digAccount, {
-//   price: 50000,
-//   condition: "or more",
-// });
-// // [
-// // {
-// // id: 2,
-// // name: "very good desk",
-// // category: "desk",
-// // stock: 50,
-// // price: 50000
-// // },
-// // {
-// // id: 3,
-// // name: "awesome desk",
-// // category: "desk",
-// // stock: 0,
-// // price: 100000
-// // }
-// // ]
+// --------------------------------------------------
 
-// // --------------------------------------------------
+test(store("CREATE_ACCOUNT", tmcAccount), true);
+test(store("CREATE_ACCOUNT", digAccount), true);
+test(store("CREATE_ACCOUNT", adminAccount), true);
+test(store("CREATE_ACCOUNT", tmcAccount), false); //（同じアカウントは存在できない）
 
-// store("GET_ITEM_BY_STOCK", digAccount, { stock: 1, condition: "or more" });
-// // [
-// //   { id: 1, name: "desk chair", category: "chair", stock: 100, price: 3000 },
-// //   { id: 2, name: "very good desk", category: "desk", stock: 50, price: 50000 },
-// //   { id: 4, name: "good bed", category: "bed", stock: 20, price: 30000 },
-// //   { id: 5, name: "bookcase", category: "storage", stock: 50, price: 5000 },
-// // ]
+// --------------------------------------------------
 
-// // --------------------------------------------------
+test(store("CREATE_ITEM", adminAccount, {
+  id: 1,
+  name: "desk chair",
+  category: "chair",
+  stock: 100,
+  price: 3000,
+}), true);
+test(store("CREATE_ITEM", adminAccount, {
+  id: 2,
+  name: "very good desk",
+  category: "desk",
+  stock: 50,
+  price: 50000,
+}), true);
+test(store("CREATE_ITEM", adminAccount, {
+  id: 3,
+  name: "awesome desk",
+  category: "desk",
+  stock: 0,
+  price: 100000,
+}), true);
+test(store("CREATE_ITEM", adminAccount, {
+  id: 4,
+  name: "good bed",
+  category: "bed",
+  stock: 20,
+  price: 30000,
+}), true);
+test(store("CREATE_ITEM", adminAccount, {
+  id: 4,
+  name: "bookcase",
+  category: "storage",
+  stock: 50,
+  price: 5000,
+}), false); //（既に存在するIDでの作成はできない）
+test(store("CREATE_ITEM", adminAccount, {
+  id: 5,
+  name: "bookcase",
+  category: "storage",
+  stock: 50,
+  price: 5000,
+}), true);
+test(store("CREATE_ITEM", digAccount, {
+  name: "awesome chair",
+  category: "chair",
+  stock: 100,
+  price: 100000,
+}), false);//（管理者以外は実行できない）
 
-// store("GET_ITEM_BY_NAME", digAccount, { name: "desk chair" });
-// // [
-// //   { id: 1, name: "desk chair", category: "chair", stock: 100, price: 3000 },
-// // ]
+// --------------------------------------------------
 
-// // --------------------------------------------------
+test(store("GET_ITEM", tmcAccount, { id: 1 }),
+{
+id: 1,
+name: "desk chair",
+category: "chair",
+stock: 100,
+price: 3000
+});
+test(store("GET_ITEM", tmcAccount, { id: 2 }),
+{
+id: 2,
+name: "very good desk",
+category: "desk",
+stock: 50,
+price: 50000
+});
+test(store("GET_ITEM", tmcAccount, { id: 1000 }), false); //（商品が存在しない）
 
-// store("DELETE_ITEM", adminAccount, { id: 1 }), true
-// store("DELETE_ITEM", adminAccount, { id: 6 }), false（アイテムが見当たらない場合）
-// store("DELETE_ITEM", tmcAccount, { id: 2 }), false（管理者以外は実行できない）
+// --------------------------------------------------
+
+test(store("GET_ITEM_BY_CATEGORY", tmcAccount, { category: "desk" }),
+[
+{
+id: 2,
+name: "very good desk",
+category: "desk",
+stock: 50,
+price: 50000
+},
+{
+id: 3,
+name: "awesome desk",
+category: "desk",
+stock: 0,
+price: 100000
+}
+]);
+test(store("GET_ITEM_BY_CATEGORY", tmcAccount, { category: "chair" }),
+[
+{
+id: 1,
+name: "desk chair",
+category: "chair",
+stock: 100,
+price: 3000
+}
+]);
+
+// --------------------------------------------------
+
+test(store("GET_ITEM_BY_PRICE", digAccount, {
+  price: 50000,
+  condition: "or less",
+}),
+[
+{
+id: 1,
+name: "desk chair",
+category: "chair",
+stock: 100,
+price: 3000
+},
+{
+  id: 2,
+  name: 'very good desk',
+  category: 'desk',
+  stock: 50,
+  price: 50000,
+},
+{
+id: 4,
+name: "good bed",
+category: "bed",
+stock: 20,
+price: 30000
+},
+{
+id: 5,
+name: "bookcase",
+category: "storage",
+stock: 50,
+price: 5000
+}
+]);
+
+test(store("GET_ITEM_BY_PRICE", digAccount, {
+  price: 50000,
+  condition: "or more",
+}),
+[
+{
+id: 2,
+name: "very good desk",
+category: "desk",
+stock: 50,
+price: 50000
+},
+{
+id: 3,
+name: "awesome desk",
+category: "desk",
+stock: 0,
+price: 100000
+}
+]);
+
+// --------------------------------------------------
+
+test(store("GET_ITEM_BY_STOCK", digAccount, { stock: 1, condition: "or more" }),
+[
+  { id: 1, name: "desk chair", category: "chair", stock: 100, price: 3000 },
+  { id: 2, name: "very good desk", category: "desk", stock: 50, price: 50000 },
+  { id: 4, name: "good bed", category: "bed", stock: 20, price: 30000 },
+  { id: 5, name: "bookcase", category: "storage", stock: 50, price: 5000 },
+]);
+
+// --------------------------------------------------
+
+test(store("GET_ITEM_BY_NAME", digAccount, { name: "desk chair" }),
+[
+  { id: 1, name: "desk chair", category: "chair", stock: 100, price: 3000 },
+]);
+
+// --------------------------------------------------
+
+test(store("DELETE_ITEM", adminAccount, { id: 1 }), true);
+test(store("DELETE_ITEM", adminAccount, { id: 6 }), false); //（アイテムが見当たらない場合）
+test(store("DELETE_ITEM", tmcAccount, { id: 2 }), false); //（管理者以外は実行できない）
