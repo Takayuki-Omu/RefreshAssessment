@@ -15,13 +15,18 @@ function test(actual, expected) {
 // 1.関数 test(feed を作成し、グルメな犬と猫にごはんをあげましょう。 犬は牛肉（beef）味のドッグフード、猫はマグロ（tuna）味のキャットフードが好きで、それ以外は食べたがりません。 動物が犬か猫かの文字列とごはんを表すオブジェクトを受け取り、与えたごはんが気に入った場合は "I love it!"、気に入らなかった場合は "I don't like it!" と返しましょう。
 
 // ここにコードを書きましょう
+// const feed = function(animal, food) {
+//   if ((animal === "dog" && food.custom === "dog food" && food.taste === "beef") ||
+//      (animal === "cat" && food.custom === "cat food" && food.taste === "tuna")) {
+//     return "I love it!";
+//   } else {
+//     return "I don't like it!";
+//   }
+// }
 const feed = function(animal, food) {
-  if ((animal === "dog" && food.custom === "dog food" && food.taste === "beef") ||
-     (animal === "cat" && food.custom === "cat food" && food.taste === "tuna")) {
-    return "I love it!";
-  } else {
-    return "I don't like it!";
-  }
+  const dogLikes = animal === "dog" && food.custom === "dog food" && food.taste === "beef";
+  const catLikes = animal === "cat" && food.custom === "cat food" && food.taste === "tuna";
+  return dogLikes || catLikes ? "I love it!" : "I don't like it!";
 }
 
 test(feed("dog", { custom: "dog food", taste: "beef" }), "I love it!");
