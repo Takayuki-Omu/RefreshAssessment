@@ -322,7 +322,7 @@ test(findExtremeValue(arr21, "MIN"), 10);
 test(findExtremeValue(obj11, "MAX"), 100);
 test(findExtremeValue(obj21, "MIN"), 5);
 
-
+console.log("────────────────");
 //──────────────────────────────OK
 //14.自動販売機を制御するオブジェクト vendingMachine を作成しましょう。 以下の動作を満たすメソッドを作成しましょう。 お金を投入する - insertMoney ドリンクを選ぶ - selectDrink お釣りを出す - returnChange 以下のプロパティを持ちましょう。 お金の投入額 - money いま自動販売機内にあるお金の総額 - totalMoney
 
@@ -347,10 +347,11 @@ const vendingMachine = {
   },
 
   selectDrink(drink) {
+    const drinkName = drinkStock.find(stock => stock.name === drink).name;
     const drinkPrice = drinkStock.find(stock => stock.name === drink).price;
     if (this.money >= drinkPrice) {
       this.money -= drinkPrice;
-      return "water が出てきました！";
+      return `${drinkName} が出てきました！`;
     } else {
       return "お金が足りません";
     }
@@ -386,6 +387,17 @@ test(vendingMachine.insertMoney(), "お金を投入してください");
 test(vendingMachine.insertMoney(-100), "お金を投入してください");
 
 
+test(vendingMachine.selectDrink("tea"), "お金が足りません");
+vendingMachine.insertMoney(100);
+test(vendingMachine.money, 200);
+test(vendingMachine.totalMoney, 1300);
+test(vendingMachine.selectDrink("tea"), "tea が出てきました！");
+test(vendingMachine.returnChange(), 50);
+test(vendingMachine.money, 0);
+test(vendingMachine.totalMoney, 1250);
+
+
+console.log("────────────────");
 //──────────────────────────────OK
 //15.compare という関数を作成してください。 compare は 2 つの値を引数に取り、その値が等しいかを判定してブーリアンを返します。オブジェクトについては順番を考慮する必要はありません。ただし値がネストしている場合も、完全に一致しているかを確かめてください。 この関数ではネイティブメソッドの使用は禁止とします。
 
