@@ -400,7 +400,7 @@ test(vendingMachine.returnChange(), 50);
 test(vendingMachine.money, 0);
 test(vendingMachine.totalMoney, 1250);
 
-console.log("────────────────");
+
 //──────────────────────────────OK
 //15.compare という関数を作成してください。 compare は 2 つの値を引数に取り、その値が等しいかを判定してブーリアンを返します。オブジェクトについては順番を考慮する必要はありません。ただし値がネストしている場合も、完全に一致しているかを確かめてください。 この関数ではネイティブメソッドの使用は禁止とします。
 
@@ -452,33 +452,102 @@ const compare = function(value1, value2) {
   //   return objCompare(value1, value2);
   // }
 
-  //テキストで比較
-  if (`${value1}` === `${value2}`) {
-    return true;
+
+  //オブジェクト以外の値を比較
+  if (typeof value1 !== "object" || value1 === null ) {
+    return value1 === value2;//直に返してOK
   }
 
-  return false;
+  //配列をチェック
+  if (value1.constructor === Array) {
+    if (value1.length !== value2.length) {
+      return false;//"配列の長さが違う";//直に返してOK
+    }
+
+    for (const element1 of value1) {
+      let isFound = false;
+
+      for (const element2 of value2) {
+        isFound = compare(element1, element2);
+        if (isFound) {
+          break;
+        }
+      }
+      if (!isFound) {
+        return false;//"配列の中身が違ったよ";//直に返してOK
+      }
+    }
+    return true;//最後までfalse出なかった//配列の中身は同じ//プリミティブの判定済みなので、返してOKかな
+  }
+
+  //オブジェクトをチェック
+  if (value1.constructor === Object) {
+    let value1length = 0;
+    let value2length = 0;
+
+    for (const key in value1) {
+      value1length++;
+    }
+    for (const key in value2) {
+      value2length++;
+    }
+    if (value1length !== value2length) {
+      return false;//"プロパティの数が違うよ"
+    }
+
+    for (const key in value1) {
+      let isFound = false;
+      isFound = compare(value1[key], value2[key]);
+      if (!isFound) {
+        return false;//プロパティが違った
+      }
+    }
+    return true;//プロパティは同じ
+  }
   
+  return false;//"未対応の値";
+
 }
+
+console.log("────────────────");
+// test(compare(1, 1), true);
+// test(compare(1, 2), false);
+// test(compare(undefined, undefined), true);
+// test(compare(undefined, 1), false);
+// test(compare(null, 0), false);
+// test(compare(null, null), true);
+// test(compare("a", "b"), false);
+// test(compare([1, 2, 3], [1, 2, 3]), true);
+// test(compare([1, 2, 3], [3, 1, 2]), true);
+// test(compare([1, 2, 3], [1, 3, 2, 4]), false);
+// test(compare({ a: 1, b: 2 }, [1, 3, 2, 4]), false);
+// test(compare([1, 2, 3], { a: 1, b: 2 }), false);
+// test(compare({ a: 1, b: 2 }, { a: 1, b: 2 }), true);
+test(compare([{ a: 1, b: 2 }, { c: 1, d: 2 }], [{ a: 1, b: 2 }, { c: 1, d: 2 }]), true);
+test(compare([{ a: 1, b: 2 }, { c: 1, d: 2 }], [{ c: 1, d: 2 }, { a: 1, b: 2 }]), true);
+test(compare([{ b: 2, a: 1 }, { c: 1, d: 2 }], [{ c: 1, d: 2 }, { a: 1, b: 2 }]), true);
+
+
+
+// test(compare([1, 2, 3], [1, 4, 2, 3]), false);
 
 // test(compare(1, 1), true);
 // test(compare(1, 2), false);
 
 // test(compare("a", "a"), true);
 // test(compare("a", "b"), false);
-test(compare([1, 2, 3], [1, 2, 3]), true);
-
+  
 // test(compare([1, 2, 3], [1, 2, 4]), false);
 // test(compare([1, 2, 3], [1, 2, 3, 4]), false);
 
-// test(compare({ a: 1, b: 2 }, { a: 1, b: 2 }), true);
+// test(compare({ a: 1, b: 2 }, { a: 1, b: 3 }), false);
 // test(compare({ a: 1, b: 2 }, { b: 2, a: 1 }), true);
 // test(compare({ a: 1, b: 2 }, { a: 1, b: 3 }), false);
 
-test(compare(
-  { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
-  { a: 1, b: { c: { d: 2, e: { f: 3 } } } }
-), true);
+// test(compare(
+//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
+//   { a: 1, b: { c: { d: 2, e: { f: 3 } } } }
+// ), true);
 // test(compare(
 //   { a: 1, b: { c: { d: 2, e: { f: 3 } } } },
 //   { a: 1, b: { c: { d: 2, e: { f: 4 } } } }
@@ -488,8 +557,6 @@ test(compare(
 //   { a: 1, b: { c: { d: 2, e: { f: 4, g: 5 } } } }
 // ), false);
 
-test(compare(true, false), false);
-test(compare(null, null), true);
 
 
 console.log("────────────────");
